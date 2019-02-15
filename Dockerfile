@@ -18,25 +18,18 @@ RUN set -eu && \
         ca-certificates \
         curl \
         ; \
-    :
-
-RUN set -eu && \
     # Set up Hadoop
     curl -O https://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz; \
     tar xvf hadoop-${HADOOP_VERSION}.tar.gz; \
     mv hadoop-${HADOOP_VERSION} /opt; \
     ln -s hadoop-${HADOOP_VERSION} ${HADOOP_HOME}; \
-    :
-
-RUN set -eu && \
+    rm -r hadoop-${HADOOP_VERSION}.tar.gz; \
     # Set up Hive
     curl -O https://archive.apache.org/dist/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz; \
     tar xvf apache-hive-${HIVE_VERSION}-bin.tar.gz; \
     mv apache-hive-${HIVE_VERSION}-bin.tar.gz /opt; \
     ln -s apache-hive-${HIVE_VERSION}-bin hive; \
-    :
-
-RUN set -eu && \
+    rm -r apache-hive-${HIVE_VERSION}-bin.tar.gz; \
     # apt clean-up
     rm -rf /var/lib/apt/lists/*; \
     :

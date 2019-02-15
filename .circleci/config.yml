@@ -5,7 +5,7 @@ jobs:
     environment:
       HADOOP_VERSION: 3.1.0
       HIVE_VERSION: 3.0.0
-      IMAGE_NAME: test-hadoop-hive-custom
+      IMAGE_NAME: hadoop-hive-custom
 
     steps:
     - checkout
