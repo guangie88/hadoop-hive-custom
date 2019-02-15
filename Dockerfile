@@ -17,6 +17,7 @@ RUN set -eu && \
     apt-get update && apt-get -y --no-install-recommends install \
         ca-certificates \
         curl \
+        procps \
         ; \
     # Set up Hadoop
     curl -O https://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz; \
@@ -28,7 +29,7 @@ RUN set -eu && \
     curl -O https://archive.apache.org/dist/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz; \
     tar xvf apache-hive-${HIVE_VERSION}-bin.tar.gz; \
     mv apache-hive-${HIVE_VERSION}-bin /opt; \
-    ln -s apache-hive-${HIVE_VERSION}-bin hive; \
+    ln -s apache-hive-${HIVE_VERSION}-bin ${HIVE_HOME}; \
     rm -r apache-hive-${HIVE_VERSION}-bin.tar.gz; \
     # apt clean-up
     rm -rf /var/lib/apt/lists/*; \
