@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    environment:
+      HADOOP_VERSION: 3.1.0
+      HIVE_VERSION: 3.0.0
+      IMAGE_NAME: test-hadoop-hive-custom
+
+    steps:
+    - checkout
+
+    # login to Docker first
+    - run: docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+    
+    # build the application image
+    - run: docker build . -t guangie88/${IMAGE_NAME}:hadoop-${HADOOP_VERSION}_hive-${HIVE_VERSION}
+
+    # push the application image
+    - run: docker tag guangie88/${IMAGE_NAME}:hadoop-${HADOOP_VERSION}_hive-${HIVE_VERSION} guangie88/${IMAGE_NAME}:hadoop-${HADOOP_VERSION}_hive-${HIVE_VERSION}
+    - run: docker push guangie88/${IMAGE_NAME}:hadoop-${HADOOP_VERSION}_hive-${HIVE_VERSION}
