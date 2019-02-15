@@ -27,7 +27,7 @@ RUN set -eu && \
     # Set up Hive
     curl -O https://archive.apache.org/dist/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz; \
     tar xvf apache-hive-${HIVE_VERSION}-bin.tar.gz; \
-    mv apache-hive-${HIVE_VERSION}-bin.tar.gz /opt; \
+    mv apache-hive-${HIVE_VERSION}-bin /opt; \
     ln -s apache-hive-${HIVE_VERSION}-bin hive; \
     rm -r apache-hive-${HIVE_VERSION}-bin.tar.gz; \
     # apt clean-up
